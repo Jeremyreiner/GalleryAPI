@@ -28,7 +28,7 @@ namespace GalleryAPI.Controllers
             return Ok(response);
         }
 
-        [HttpPost("{repositoryId}/bookmark")]
+        [HttpPost("bookmark/{repositoryId}")]
         public async Task<ActionResult> BookmarkRepository(int repositoryId)
         {
             // TODO: Implement this action to bookmark a repository for the current user.
