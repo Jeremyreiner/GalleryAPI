@@ -20,7 +20,7 @@ namespace GalleryAPI.Controllers
             _GitHubService = gitHubService;
         }
 
-        [HttpGet]
+        [HttpGet("search/{query}")]
         public async Task<ActionResult<IEnumerable<GitHubItem>>> Get(string query)
         {   
             var response = await _GitHubService.QueryGitHub(query);

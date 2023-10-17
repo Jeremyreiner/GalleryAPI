@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontEndGallery": {
+    "ClientApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/front-end-gallery",
+            "outputPath": "dist/client-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,18 +60,21 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FrontEndGallery:build:production"
+              "browserTarget": "ClientApp:build:production"
             },
             "development": {
-              "browserTarget": "FrontEndGallery:build:development"
+              "browserTarget": "ClientApp:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FrontEndGallery:build"
+            "browserTarget": "ClientApp:build"
           }
         },
         "test": {

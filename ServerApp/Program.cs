@@ -39,6 +39,15 @@ builder.Services.AddHttpClient("GitHub", httpClient =>
     httpClient.BaseAddress = new Uri("https://api.github.com");
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 
 var app = builder.Build();
 
@@ -54,7 +63,7 @@ app.UseHttpsRedirection();
 // Add the JwtBearer authentication middleware to the pipeline.
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors("AllowLocalhost");
 app.MapControllers();
 
 app.Run();
