@@ -1,4 +1,4 @@
-﻿namespace GalleryAPI.Entities;
+﻿namespace Gallery.Shared.Entities;
 
 public class GitHubItem
 {

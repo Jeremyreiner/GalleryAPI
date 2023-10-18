@@ -1,5 +1,4 @@
-﻿using GalleryAPI.Entities;
-using GalleryAPI.Interface;
+﻿using GalleryAPI.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Publify.Services.IdentifyTokenService;
 

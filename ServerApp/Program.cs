@@ -1,10 +1,6 @@
 using GalleryAPI.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using GalleryAPI.Interface;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
 using GalleryAPI.IdentifyTokenService;
 using Publify.Services.IdentifyTokenService;
 

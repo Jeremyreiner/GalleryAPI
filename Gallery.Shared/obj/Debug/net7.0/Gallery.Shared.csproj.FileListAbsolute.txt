@@ -1,0 +1,11 @@
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\bin\Debug\net7.0\Gallery.Shared.deps.json
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\bin\Debug\net7.0\Gallery.Shared.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\bin\Debug\net7.0\Gallery.Shared.pdb
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.AssemblyInfoInputs.cache
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.AssemblyInfo.cs
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.csproj.CoreCompileInputs.cache
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\refint\Gallery.Shared.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\Gallery.Shared.pdb
+C:\Users\reine\source\repos\GalleryAPI\Gallery.Shared\obj\Debug\net7.0\ref\Gallery.Shared.dll

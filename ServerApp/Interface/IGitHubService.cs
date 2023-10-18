@@ -1,4 +1,4 @@
-﻿using GalleryAPI.Entities;
+﻿using Gallery.Shared.Entities;
 
 namespace GalleryAPI.Interface;
 

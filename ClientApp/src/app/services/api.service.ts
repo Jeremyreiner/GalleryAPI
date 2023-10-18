@@ -9,7 +9,6 @@ import { GitHubItem } from '../models/gitHubItems';
 export class ApiService {
   private apiBaseUrl = '/api'; // Use the base URL defined in the proxy configuration
   private hardCoded = `https://localhost:5002/api/`
-  private tokenKey = 'access_token';
 
 
   constructor(private http: HttpClient) {}

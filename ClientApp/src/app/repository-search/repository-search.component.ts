@@ -21,17 +21,13 @@ export class RepositorySearchComponent {
 
   bookmarkItem(item: GitHubItem) {
     if (this.gallery.includes(item)) {
-      console.log(`removing from gallery: `, item.full_name)
       const index = this.gallery.indexOf(item);
       if (index !== -1) {
         this.gallery.splice(index, 1);
       }
-      console.log(`gallery: `, this.gallery)
       return;
     }
-    console.log(`inserting to gallery: `, item.full_name)
     this.gallery.push(item);
-    console.log(`gallery: `, this.gallery)
   }
 
   toggleGallery(){
@@ -67,5 +63,3 @@ export class RepositorySearchComponent {
     }
   }
 }
-// Save to grepper
-// This code checks if data is an array using Array.isArray(data) before attempting to use the map method. Additionally, it includes error handling for both the data format and any errors that may occur during the HTTP request. Make sure to import your GitHubItem model as shown above.
