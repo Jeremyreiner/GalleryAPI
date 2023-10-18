@@ -20,72 +20,9 @@
     border-radius: 4px;
 }
 
-.expand-button:hover .avatar-image {
-
-    opacity: 1;
-    /* Display the image with opacity on hover */
-    visibility: visible;
-    /* Display the image on hover */
-}
-
-/* repository-search.component.css */
-
-.expand-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    border-radius: 5px;
-    text-align: left;
-    width: 300px;
-    /* Double the width for the button */
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    margin-right: 5px;
-    /* Add margin to separate buttons */
-    padding: .5rem 1rem;
-    /* Add padding to make the button more comfortable */
-    transition: background-color 0.3s, box-shadow 0.3s;
-    /* Add transition for hover effect */
-}
-
-/* .expand-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    gap: 1em;
-    align-items: center;
-    border-radius: 5px;
-    text-align: left;
-    width: 300px;
-    //Double the width for the button
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-    margin-right: 5px;
-    //Add margin to separate buttons 
-} */
-
-.expand-button:hover {
-    background-color: #0056b3;
-    /* Change background color on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    /* Add a subtle shadow on hover */
-}
-
-/* Other styles remain the same */
-
-/* Add these styles to your component's CSS or a global CSS file */
-
 .search-form {
     margin-top: 10px;
-    
+
     /* Adjust the top margin as needed */
 }
 
@@ -105,8 +42,129 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Vertically align content at the top */
-    height: 100vh; /* Make the container cover the full viewport height */
-    overflow: auto; /* Allow the container to be scrollable */
-  }
-  
+    justify-content: flex-start;
+    /* Vertically align content at the top */
+    height: 100vh;
+    width: 70%;
+    /* Make the container cover the full viewport height */
+    overflow: auto;
+    /* Allow the container to be scrollable */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.search-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 20%;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-results {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 20%;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Style the input field */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    margin-bottom: 10px;
+    /* Add margin to separate input and button */
+}
+.static-button{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    border-radius: 5px;
+    text-align: left;
+    width: 300px;
+    /* Double the width for the button */
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    /* Add margin to separate buttons */
+    padding: .5rem 1rem;
+    /* Add padding to make the button more comfortable */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Add transition for hover effect */
+}
+.expand-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    border-radius: 5px;
+    text-align: left;
+    width: 300px;
+    /* Double the width for the button */
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    /* Add margin to separate buttons */
+    padding: .5rem 1rem;
+    /* Add padding to make the button more comfortable */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Add transition for hover effect */
+}
+
+.expand-button:hover .avatar-image {
+
+    opacity: 1;
+    /* Display the image with opacity on hover */
+    visibility: visible;
+    /* Display the image on hover */
+}
+
+.expand-button:hover {
+    background-color: #0056b3;
+    /* Change background color on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow on hover */
+}
+
+/* Style the search button */
+button.btn-primary {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    /* Change border color when focused */
+}

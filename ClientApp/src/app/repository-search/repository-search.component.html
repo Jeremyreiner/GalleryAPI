@@ -12,13 +12,13 @@
         </form>
     </div>
 
-    <div class="search-results" *ngIf="searchResults.length > 0">
-        <div>
-            <button class="expand-button" (click)="toggleGallery()">
-                {{ openGallery ? 'Return to Search' : 'View Gallery' }}
-            </button>
-        </div>
+    <div>
+        <button class="static-button" (click)="toggleGallery()">
+            {{ openGallery ? 'Return to Search' : 'View Gallery' }}
+        </button>
+    </div>
 
+    <div class="search-results" *ngIf="searchResults.length > 0">
 
         <ul class="result-list">
             <li *ngFor="let result of (openGallery ? gallery : searchResults)" class="result-item">
