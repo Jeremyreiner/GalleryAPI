@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { GitHubItem } from '../models/gitHubItems';
 
@@ -9,6 +9,8 @@ import { GitHubItem } from '../models/gitHubItems';
 export class ApiService {
   private apiBaseUrl = '/api'; // Use the base URL defined in the proxy configuration
   private hardCoded = `https://localhost:5002/api/`
+  private tokenKey = 'access_token';
+
 
   constructor(private http: HttpClient) {}
 

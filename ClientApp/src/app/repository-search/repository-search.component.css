@@ -1,0 +1,112 @@
+/* repository-search.component.css */
+
+.result-item {
+    list-style: none;
+    /* Remove list bullets */
+    padding: .5rem 1rem;
+    /* Add padding to the list to separate items */
+}
+
+.avatar-image {
+    opacity: 0;
+    /* Initially hide the image with opacity */
+    left: 100%;
+    /* Position it at the far right end of the button */
+    width: 50px;
+    /* Set the desired width for the image */
+    height: auto;
+    /* Maintain aspect ratio */
+    padding: .5rem;
+    border-radius: 4px;
+}
+
+.expand-button:hover .avatar-image {
+
+    opacity: 1;
+    /* Display the image with opacity on hover */
+    visibility: visible;
+    /* Display the image on hover */
+}
+
+/* repository-search.component.css */
+
+.expand-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    border-radius: 5px;
+    text-align: left;
+    width: 300px;
+    /* Double the width for the button */
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-right: 5px;
+    /* Add margin to separate buttons */
+    padding: .5rem 1rem;
+    /* Add padding to make the button more comfortable */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Add transition for hover effect */
+}
+
+/* .expand-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    border-radius: 5px;
+    text-align: left;
+    width: 300px;
+    //Double the width for the button
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-right: 5px;
+    //Add margin to separate buttons 
+} */
+
+.expand-button:hover {
+    background-color: #0056b3;
+    /* Change background color on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow on hover */
+}
+
+/* Other styles remain the same */
+
+/* Add these styles to your component's CSS or a global CSS file */
+
+.search-form {
+    margin-top: 10px;
+    
+    /* Adjust the top margin as needed */
+}
+
+.input-group {
+    margin-right: 10px;
+    /* Adjust the right margin for spacing between input and button */
+}
+
+/* Optional: Style the input field's placeholder text */
+.form-control::placeholder {
+    color: #6c757d;
+    /* Adjust the color as needed */
+}
+
+/* Style the container to center its content */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Vertically align content at the top */
+    height: 100vh; /* Make the container cover the full viewport height */
+    overflow: auto; /* Allow the container to be scrollable */
+  }
+  

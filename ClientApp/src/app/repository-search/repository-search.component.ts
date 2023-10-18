@@ -10,22 +10,39 @@ import { GitHubItem } from '../models/gitHubItems';
 export class RepositorySearchComponent {
   searchTerm: string = '';
   searchResults: GitHubItem[] = [];
+  gallery: GitHubItem[] = [];
+  openGallery: boolean = false;
 
-  constructor(private apiService: ApiService) {} // Inject the ApiService
 
-  // onSubmit() {
-  //   if (this.searchTerm !== '') {
-  //     this.apiService.getRepositories(this.searchTerm).subscribe((data) => {
-  //       this.searchResults = data; // Save the search results
-  //       console.log('request, ', this.searchResults)
-  //     });
-  //   }
-  // }
+
+  constructor(
+    private apiService: ApiService) { } // Inject the ApiService
+  //private state: StateService
+
+  bookmarkItem(item: GitHubItem) {
+    if (this.gallery.includes(item)) {
+      console.log(`removing from gallery: `, item.full_name)
+      const index = this.gallery.indexOf(item);
+      if (index !== -1) {
+        this.gallery.splice(index, 1);
+      }
+      console.log(`gallery: `, this.gallery)
+      return;
+    }
+    console.log(`inserting to gallery: `, item.full_name)
+    this.gallery.push(item);
+    console.log(`gallery: `, this.gallery)
+  }
+
+  toggleGallery(){
+    this.openGallery = !this.openGallery;
+  }
+
   onSubmit() {
     if (this.searchTerm) {
       this.apiService.getRepositories(this.searchTerm).subscribe(
         (response) => {
-          console.log(`type, `, typeof(response))
+          console.log(`type, `, typeof (response))
           if (response.items && Array.isArray(response.items)) {
             this.searchResults = response.items.map((item: { full_name: string; owner: { avatar_url: any; }; }) => {
               const mappedItem = new GitHubItem();

@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using GalleryAPI.Interface;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using GalleryAPI.IdentifyTokenService;
+using Publify.Services.IdentifyTokenService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,26 +16,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var configuration = builder.Configuration;
-
-// Add the JwtBearer authentication middleware.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        // Configure the JWT token validation parameters.
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetSection("SecurityKey").Value)),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateLifetime = true
-        };
-    });
-
 // Register the JwtAuthenticationService as a singleton service.
-builder.Services.AddSingleton<JwtAuthenticationService>();
+builder.Services.AddSingleton<JwtService>();
+builder.Services.AddSingleton<IIdentifyTokenService, IdentifyTokenService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddSingleton<IGitHubService, GitHubService>();
+builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+
+//Auth
+builder.Services.AddTokenAuthentication(builder.Configuration);
+//Swagger Auth
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please insert JWT with Bearer into field",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+});
+
 
 builder.Services.AddHttpClient("GitHub", httpClient =>
 {
@@ -62,8 +68,11 @@ app.UseHttpsRedirection();
 
 // Add the JwtBearer authentication middleware to the pipeline.
 app.UseAuthentication();
+
 app.UseAuthorization();
+
 app.UseCors("AllowLocalhost");
+
 app.MapControllers();
 
 app.Run();

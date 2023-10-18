@@ -16,7 +16,8 @@ namespace GalleryAPI.Services
         {
             var client = _HttpClientFactory.CreateClient("GitHub");
 
-            return await client.GetFromJsonAsync<GitHubData>($"search/repositories?q={query}");
+            return  await client.GetFromJsonAsync<GitHubData>($"search/repositories?q={query}");
+
         }
     }
 }
