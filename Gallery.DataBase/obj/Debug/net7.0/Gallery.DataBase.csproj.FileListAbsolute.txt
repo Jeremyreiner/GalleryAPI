@@ -1,0 +1,15 @@
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\bin\Debug\net7.0\Gallery.DataBase.deps.json
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\bin\Debug\net7.0\Gallery.DataBase.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\bin\Debug\net7.0\Gallery.DataBase.pdb
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.AssemblyInfoInputs.cache
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.AssemblyInfo.cs
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.csproj.CoreCompileInputs.cache
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\refint\Gallery.DataBase.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.pdb
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\ref\Gallery.DataBase.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\bin\Debug\net7.0\Gallery.Shared.dll
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\bin\Debug\net7.0\Gallery.Shared.pdb
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.csproj.AssemblyReference.cache
+C:\Users\reine\source\repos\GalleryAPI\Gallery.DataBase\obj\Debug\net7.0\Gallery.DataBase.csproj.CopyComplete

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalleryAPI", "GalleryAPI.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Shared", "..\Gallery.Shared\Gallery.Shared.csproj", "{F411EDEF-FA5E-4B13-B19B-15C33C6037C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.DataBase", "..\Gallery.DataBase\Gallery.DataBase.csproj", "{8433C311-7C4B-4B24-9A70-0F71BEB2C465}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F411EDEF-FA5E-4B13-B19B-15C33C6037C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F411EDEF-FA5E-4B13-B19B-15C33C6037C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F411EDEF-FA5E-4B13-B19B-15C33C6037C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8433C311-7C4B-4B24-9A70-0F71BEB2C465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8433C311-7C4B-4B24-9A70-0F71BEB2C465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8433C311-7C4B-4B24-9A70-0F71BEB2C465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8433C311-7C4B-4B24-9A70-0F71BEB2C465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

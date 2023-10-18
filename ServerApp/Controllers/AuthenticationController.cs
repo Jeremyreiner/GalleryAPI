@@ -1,6 +1,6 @@
-﻿using GalleryAPI.Interface;
+﻿using GalleryAPI.IdentifyTokenService;
+using GalleryAPI.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Publify.Services.IdentifyTokenService;
 
 namespace GalleryAPI.Controllers;
 
@@ -17,17 +17,17 @@ public class AuthenticationController : ControllerBase
         _IdentifyTokenService = identifyTokenService;
     }
 
-    [HttpPost(nameof(Login))]
-    public async Task<ActionResult<string>> Login([FromBody] string user)
+    [HttpGet("Login/{user}")]
+    public async Task<string> Login(string user)
     {
-        var name = _IdentifyTokenService.GetEmailFromToken();
+        var name = _IdentifyTokenService.GetNameFromToken();
 
         if (!string.IsNullOrEmpty(name))
-            return Ok(name);
+            return name;
 
         var token = await _AuthenticationService.GenerateToken(user);
 
-        return Ok(token);
+        return token;
     }
 
     [HttpPost(nameof(LogOut))]

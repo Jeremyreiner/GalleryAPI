@@ -1,8 +1,11 @@
+using Gallery.DataBase.Infrastructure.MySql;
+using Gallery.DataBase.Repositories;
+using Gallery.Shared.Interface;
 using GalleryAPI.Services;
 using GalleryAPI.Interface;
 using Microsoft.OpenApi.Models;
 using GalleryAPI.IdentifyTokenService;
-using Publify.Services.IdentifyTokenService;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,12 +16,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register the JwtAuthenticationService as a singleton service.
-builder.Services.AddSingleton<JwtService>();
-builder.Services.AddSingleton<IIdentifyTokenService, IdentifyTokenService>();
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<IIdentifyTokenService, IdentifyTokenService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddSingleton<IGitHubService, GitHubService>();
-builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<IGitHubService, GitHubService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 //Auth
 builder.Services.AddTokenAuthentication(builder.Configuration);
@@ -50,8 +55,17 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
+//MySQL
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("MySql"),
+        new MySqlServerVersion(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql")))));
 
 var app = builder.Build();
+
+//AppDbContext on startup
+var scope = app.Services.CreateScope();
+
+scope.ServiceProvider.GetService<ApplicationDbContext>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

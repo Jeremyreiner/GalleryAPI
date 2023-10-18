@@ -1,10 +1,10 @@
-import { UserModel } from "./UserModel";
+import { LoginModel } from "../authentication/login.service";
 
 export class TokenModel {
   token: string = '';
-  user: UserModel;
+  user: LoginModel;
   
-  constructor(user?: UserModel) {
+  constructor(user: LoginModel) {
     this.user = user;
   }
 }

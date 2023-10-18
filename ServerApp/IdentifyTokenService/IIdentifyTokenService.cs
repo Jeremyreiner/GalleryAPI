@@ -1,7 +1,7 @@
-﻿namespace Publify.Services.IdentifyTokenService;
+﻿namespace GalleryAPI.IdentifyTokenService;
 
 public interface IIdentifyTokenService
 {
-    string? GetEmailFromToken();
+    string? GetNameFromToken();
     string GetEmailFromTokenThrow();
 }

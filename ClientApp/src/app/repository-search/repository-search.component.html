@@ -1,13 +1,10 @@
 <div class="page-container">
     <!-- Updated search form -->
     <div class="search-form">
-        <form (ngSubmit)="onSubmit()" #searchForm="ngForm" class="form-inline">
+        <form #searchForm="ngForm" class="form-inline">
             <div class="input-group">
                 <input type="text" class="form-control custom-input" id="searchInput" [(ngModel)]="searchTerm"
-                    name="searchTerm" placeholder="Search GitHub Repositories" />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
+                    (input)="onSubmit()" name="searchTerm" placeholder="Search GitHub Repositories" />
             </div>
         </form>
     </div>
@@ -18,15 +15,25 @@
         </button>
     </div>
 
-    <div class="search-results" *ngIf="searchResults.length > 0">
-
+    <div class="search-results">
         <ul class="result-list">
-            <li *ngFor="let result of (openGallery ? gallery : searchResults)" class="result-item">
-                <button class="expand-button" (dblclick)="bookmarkItem(result)">
-                    {{ result.full_name }}
-                    <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
-                </button>
-            </li>
+            <ng-container *ngIf="openGallery; else itemsBlock">
+                <li *ngFor="let result of userGallery" class="result-item">
+                    <button class="expand-button" (dblclick)="bookmarkItem(result)">
+                        {{ result.full_name }}
+                        <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
+                    </button>
+                </li>
+            </ng-container>
+
+            <ng-template #itemsBlock>
+                <li *ngFor="let result of items$ | async" class="result-item">
+                    <button class="expand-button" (dblclick)="bookmarkItem(result)">
+                        {{ result.full_name }}
+                        <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
+                    </button>
+                </li>
+            </ng-template>
         </ul>
     </div>
 </div>

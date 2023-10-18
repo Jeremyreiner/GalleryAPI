@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Gallery.DataBase\Gallery.DataBase.csproj" />
     <ProjectReference Include="..\Gallery.Shared\Gallery.Shared.csproj" />
   </ItemGroup>
 

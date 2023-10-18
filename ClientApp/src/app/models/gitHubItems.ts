@@ -5,8 +5,8 @@ class GitHubItem {
     owner: GitHubOwner = new GitHubOwner();
 }
 
-class GitHubData {
-    items: GitHubItem[] = [];
+interface GitHubData {
+    items: GitHubItem[];
 }
 
 class GitHubOwner {

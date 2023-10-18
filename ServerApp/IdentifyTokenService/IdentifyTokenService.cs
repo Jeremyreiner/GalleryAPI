@@ -1,6 +1,4 @@
-﻿using Publify.Services.IdentifyTokenService;
-
-namespace GalleryAPI.IdentifyTokenService;
+﻿namespace GalleryAPI.IdentifyTokenService;
 
 public class IdentifyTokenService : IIdentifyTokenService
 {
@@ -11,7 +9,7 @@ public class IdentifyTokenService : IIdentifyTokenService
         _HttpContextAccessor = httpContextAccessor;
     }
 
-    public string? GetEmailFromToken()
+    public string? GetNameFromToken()
     {
         try
         {
@@ -27,7 +25,7 @@ public class IdentifyTokenService : IIdentifyTokenService
 
     public string GetEmailFromTokenThrow()
     {
-        var email= GetEmailFromToken();
+        var email= GetNameFromToken();
 
         return email ?? throw new ArgumentException("User is not authenticated");
     }
