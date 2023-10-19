@@ -51,6 +51,8 @@ namespace Gallery.Shared.Services
 
             if (exists is null)
             {
+                _Logger.LogInformation($"Adding to gallery: {item.full_name}");
+                
                 await _GalleryRepository.AddAsync(new GalleryModel
                 {
                     Id = Guid.NewGuid(),
@@ -60,7 +62,11 @@ namespace Gallery.Shared.Services
                 });
             }
             else
+            {
+                _Logger.LogInformation($"Removing from gallery: {item.full_name}");
+                
                 await _GalleryRepository.DeleteAsync(exists);
+            }
         }
     }
 }

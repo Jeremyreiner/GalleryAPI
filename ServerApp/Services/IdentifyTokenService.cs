@@ -15,20 +15,12 @@ public class IdentifyTokenService : IIdentifyTokenService
     {
         try
         {
-            var claim = _HttpContextAccessor?.HttpContext?.User.Identities.First();//.Claims.First().Value;
+            return _HttpContextAccessor?.HttpContext?.User.Identities.First().Claims.First().Value;
 
-            return claim.Claims.First().Value;
         }
         catch
         {
             return string.Empty;
         }
-    }
-
-    public string GetEmailFromTokenThrow()
-    {
-        var email = GetNameFromToken();
-
-        return email ?? throw new ArgumentException("User is not authenticated");
     }
 }

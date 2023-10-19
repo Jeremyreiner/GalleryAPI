@@ -12,14 +12,12 @@ export class LoginComponent {
 
   constructor(
     private api: ApiService,
-    private router: Router){}
+    private router: Router) { }
 
   onSubmit() {
-    console.log(`clicked `, this.name);
-
-    this.api.login(this.name).subscribe((token: string) => {
-      console.log(`token to storage`, token);
-      localStorage.setItem('authToken', token)
-    })
-    this.router.navigate(['search-repositories']);
-}}
+    if(this.name){
+      this.api.login(this.name);
+      this.router.navigate(['search-repositories']);
+    }
+  }
+}

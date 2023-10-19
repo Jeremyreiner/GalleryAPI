@@ -3,5 +3,4 @@
 public interface IIdentifyTokenService
 {
     string? GetNameFromToken();
-    string GetEmailFromTokenThrow();
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, debounceTime, map, of, switchMap, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { BehaviorSubject, Observable,debounceTime, map, of, switchMap } from 'rxjs';
 import { GitHubData, GitHubItem } from '../models/gitHubItems';
+import { TokenModel } from '../models/TokenModel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,25 @@ export class ApiService {
   
   public viewGallery = new BehaviorSubject<boolean>(false);
   public searchTerm = new BehaviorSubject<string>('');
-  
+  public token = new BehaviorSubject<string>('');
+
+  public token$ = this.token.asObservable();
   public searchTerm$ = this.searchTerm.asObservable();
   public viewGallery$ = this.viewGallery.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  // Example method for making a request to your .NET Web API
+  getHeader(){
+    const token = localStorage.getItem('authToken');
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
+  storeToken(token: string){
+    localStorage.setItem('authToken', token);
+  }
+
   getRepositories(): Observable<GitHubItem[]> {
+    this.getHeader(); 
     return this.searchTerm$.pipe(
       debounceTime(300),
       switchMap((search) => {
@@ -28,7 +40,7 @@ export class ApiService {
           return of([]);
         }
         const url = `${this.repositoryUrl}/search/${search}`;
-        return this.http.get<GitHubData>(url)
+        return this.http.get<GitHubData>(url, { headers: this.getHeader()})
           .pipe(
             map((data) => data.items)
           )
@@ -40,18 +52,25 @@ export class ApiService {
       debounceTime(0),
       switchMap(() => {
         const url = `${this.repositoryUrl}/GetUserGallery`;
-        return this.http.get<GitHubItem[]>(url);
+        return this.http.get<GitHubItem[]>(url, { headers: this.getHeader()});
       }))
   }
 
   UpdateGallery(item: GitHubItem) {
     const url = `${this.repositoryUrl}/UpdateGallery`;
-    return this.http.post(url, item).subscribe();
+    return this.http.post(url, item, { headers: this.getHeader()}).subscribe();
   }
 
-  login(name: string): Observable<any> {
-    console.log('attempting login');
-    let url = `${this.authUrl}/Login/${name}`;
-    return this.http.get<string>(url);
-  }
+  login(name: string){
+    console.log('Attempting login');
+    const url = `${this.authUrl}/Login/${name}`;
+    this.http.get<TokenModel>(url).subscribe(
+      (token: TokenModel) => {
+        this.storeToken(token.token);
+      },
+      (error) => {
+        console.log(`error: `, error);
+      });
+  }  
+  
 }

@@ -1,11 +1,13 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GalleryAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class RepositoriesController : ControllerBase
 {
     private readonly IIdentifyTokenService _IdentifyTokenService;
@@ -34,9 +36,9 @@ public class RepositoriesController : ControllerBase
     {
         var name = _IdentifyTokenService.GetNameFromToken();
 
-        _Logger.LogInformation($"Name recieved from token: {name}");
+        _Logger.LogInformation($"Name received from token: {name}");
 
-        return await _DalService.GetUserGallery("Jimmy");
+        return await _DalService.GetUserGallery(name);
     }
 
     [HttpPost(nameof(UpdateGallery))]
@@ -44,8 +46,8 @@ public class RepositoriesController : ControllerBase
     {
         var name = _IdentifyTokenService.GetNameFromToken();
 
-        _Logger.LogInformation($"Name recieved from token: {name}");
+        _Logger.LogInformation($"Name received from token: {name}");
 
-        await _DalService.UpdateGallery(item, "Jimmy");
+        await _DalService.UpdateGallery(item, name);
     }
 }
