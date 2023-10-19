@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, debounceTime, finalize, map, of, switchMap, tap } from 'rxjs';
-import { GitHubData, GitHubItem } from '../models/gitHubItems';
-import { TokenModel } from '../models/TokenModel';
+import { BehaviorSubject, Observable, catchError, debounceTime, map, of, switchMap, tap } from 'rxjs';
+import { GitHubItem } from '../models/gitHubItems';
+import { Result } from '../models/result';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +38,9 @@ export class ApiService {
           return of([]);
         }
         const url = `${this.repositoryUrl}/search/${search}`;
-        return this.http.get<GitHubData>(url, { headers: this.getHeader() })
+        return this.http.get<Result<GitHubItem[]>>(url, { headers: this.getHeader() })
           .pipe(
-            map((data) => data.items)
+            map((data) => data.value)
           )
       }))
   }
@@ -52,7 +52,10 @@ export class ApiService {
         console.log('getting gallery');
 
         const url = `${this.repositoryUrl}/GetUserGallery`;
-        return this.http.get<GitHubItem[]>(url, { headers: this.getHeader() });
+        return this.http.get<Result<GitHubItem[]>>(url, { headers: this.getHeader() })
+          .pipe(
+            map((data) => data.value)
+          )
       }))
   }
 
@@ -65,11 +68,11 @@ export class ApiService {
     console.log('Attempting login');
     const url = `${this.authUrl}/Login/${name}`;
 
-    return this.http.get<TokenModel>(url)
+    return this.http.get<Result<string>>(url)
       .pipe(
         map((res) => {
-          if (res.token) {
-            this.storeToken(res.token);
+          if (res.value) {
+            this.storeToken(res.value);
             return true;
           }
           return false;

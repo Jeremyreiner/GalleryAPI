@@ -1,7 +1,9 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
+using GalleryAPI.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace GalleryAPI.Controllers;
 
@@ -23,22 +25,33 @@ public class RepositoriesController : ControllerBase
         _Logger = logger;
     }
 
+    //[HttpGet("search/{query}")]
+    //public async Task<ActionResult<IEnumerable<GitHubItem>>> Get(string query)
+    //{
+    //    var response = await _DalService.GitHubRepositoryQuery(query);
+
+    //    return Ok(response);
+    //}
+
+    [AllowAnonymous]
     [HttpGet("search/{query}")]
-    public async Task<ActionResult<IEnumerable<GitHubItem>>> Get(string query)
+    public async Task<Result<IEnumerable<GitHubItem>>> Get(string query)
     {
         var response = await _DalService.GitHubRepositoryQuery(query);
 
-        return Ok(response);
+        return Result<IEnumerable<GitHubItem>>.Success(response.items);
     }
 
     [HttpGet(nameof(GetUserGallery))]
-    public async Task<IEnumerable<GitHubItem>> GetUserGallery()
+    public async Task<Result<IEnumerable<GitHubItem>>> GetUserGallery()
     {
         var name = _IdentifyTokenService.GetNameFromToken();
 
         _Logger.LogInformation($"Name received from token: {name}");
 
-        return await _DalService.GetUserGallery(name);
+        var gallery = await _DalService.GetUserGallery(name);
+
+        return Result<IEnumerable<GitHubItem>>.Success(gallery);
     }
 
     [HttpPost(nameof(UpdateGallery))]

@@ -1,5 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
+using GalleryAPI.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,15 +23,12 @@ public class AuthenticationController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet("Login/{user}")]
-    public async Task<TokenModel> Login(string user)
+    public async Task<Result<string>> Login(string user)
     {
         _Logger.LogInformation($"Name recieved from input: {user}");
 
         var token = await _AuthenticationService.GenerateToken(user);
 
-        return new TokenModel
-        {
-            Token = token
-        };
+        return Result<string>.Success(token);
     }
 }
