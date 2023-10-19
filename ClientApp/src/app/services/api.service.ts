@@ -8,11 +8,15 @@ import { GitHubData, GitHubItem } from '../models/gitHubItems';
 })
 export class ApiService {
   private hardCoded = `https://localhost:5002/api`;
-  private repositoryUrl = `${this.hardCoded}/Repositories`
-  private authUrl = `${this.hardCoded}/Authentication`
-  public searchTerm = new BehaviorSubject<string>('');
-  public searchTerm$ = this.searchTerm.asObservable();
+  private repositoryUrl = `${this.hardCoded}/Repositories`;
+  private authUrl = `${this.hardCoded}/Authentication`;
   
+  public viewGallery = new BehaviorSubject<boolean>(false);
+  public searchTerm = new BehaviorSubject<string>('');
+  
+  public searchTerm$ = this.searchTerm.asObservable();
+  public viewGallery$ = this.viewGallery.asObservable();
+
   constructor(private http: HttpClient) { }
 
   // Example method for making a request to your .NET Web API
@@ -32,23 +36,23 @@ export class ApiService {
   }
 
   getUserGallery(): Observable<GitHubItem[]> {
-    const url = `${this.repositoryUrl}/GetUserGallery`;
-    console.log(`updating gallery`);
-    return this.http.get<GitHubItem[]>(url);
+    return this.viewGallery$.pipe(
+      debounceTime(0),
+      switchMap(() => {
+        const url = `${this.repositoryUrl}/GetUserGallery`;
+        return this.http.get<GitHubItem[]>(url);
+      }))
   }
 
-  UpdateGallery(item: GitHubItem){
-    ///Repositories/UpdateGallery
+  UpdateGallery(item: GitHubItem) {
     const url = `${this.repositoryUrl}/UpdateGallery`;
-    console.log(`inserting item: `, item);
-    this.http.post(url, item).subscribe();
+    return this.http.post(url, item).subscribe();
   }
 
-login(): Observable <any> {
-  console.log('attempting login');
-  let name = 'Jimmy';
-  let url = `${this.authUrl}/Login/${name}`;
-  return this.http.get<string>(url);
-}
-  // You can add more methods for various API interactions here
+  login(): Observable<any> {
+    console.log('attempting login');
+    let name = 'Jimmy';
+    let url = `${this.authUrl}/Login/${name}`;
+    return this.http.get<string>(url);
+  }
 }

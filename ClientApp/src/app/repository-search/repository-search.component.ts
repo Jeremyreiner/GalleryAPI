@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'; // Import the ApiService
 import { GitHubItem } from '../models/gitHubItems';
 import { Observable } from 'rxjs';
@@ -8,35 +8,34 @@ import { Observable } from 'rxjs';
   templateUrl: './repository-search.component.html',
   styleUrls: ['./repository-search.component.css'],
 })
-export class RepositorySearchComponent{
+export class RepositorySearchComponent {
   searchTerm: string = '';
-  userGallery: GitHubItem[] = [];
   openGallery: boolean = false;
+  hasResults: boolean = false;
 
+  galleryItems$: Observable<GitHubItem[]> = this.apiService.getUserGallery(); //need a way to track changes immediatly 
   items$: Observable<GitHubItem[]> = this.apiService.getRepositories();
 
   constructor(
-    private apiService: ApiService) { } // Inject the ApiService
+    private apiService: ApiService) { 
+  
+      this.items$.subscribe((itemsResults) => {
+        this.hasResults = itemsResults.length > 0;
+      });
+    }
 
   bookmarkItem(item: GitHubItem) {
     this.apiService.UpdateGallery(item);
-    // Make API call that adds item to db
-    //Reorder final list
-    this.updateGalery();
+    this.viewGallery()
   }
 
   toggleGallery(){
     this.openGallery = !this.openGallery;
-
-    if(this.openGallery === true){
-      this.updateGalery();
-    }
   }
 
-  updateGalery(){
-    this.apiService.getUserGallery().subscribe((res) => {
-      this.userGallery = res;
-    });
+  viewGallery(){
+    this.apiService.viewGallery.next(this.openGallery);
+
   }
 
   onSubmit() {

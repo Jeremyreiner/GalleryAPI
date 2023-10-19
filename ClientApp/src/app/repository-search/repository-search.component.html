@@ -15,25 +15,14 @@
         </button>
     </div>
 
-    <div class="search-results">
+    <div class="search-results" *ngIf="hasResults || openGallery">
         <ul class="result-list">
-            <ng-container *ngIf="openGallery; else itemsBlock">
-                <li *ngFor="let result of userGallery" class="result-item">
-                    <button class="expand-button" (dblclick)="bookmarkItem(result)">
-                        {{ result.full_name }}
-                        <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
-                    </button>
-                </li>
-            </ng-container>
-
-            <ng-template #itemsBlock>
-                <li *ngFor="let result of items$ | async" class="result-item">
-                    <button class="expand-button" (dblclick)="bookmarkItem(result)">
-                        {{ result.full_name }}
-                        <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
-                    </button>
-                </li>
-            </ng-template>
+            <li *ngFor="let result of (openGallery ? galleryItems$ : items$) | async" class="result-item">
+                <button class="expand-button" (dblclick)="bookmarkItem(result)">
+                    {{ result.full_name }}
+                    <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
+                </button>
+            </li>
         </ul>
     </div>
 </div>
