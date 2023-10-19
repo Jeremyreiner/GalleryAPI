@@ -1,5 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
+using Microsoft.Extensions.Logging;
 
 namespace Gallery.Shared.Services
 {
@@ -11,11 +12,15 @@ namespace Gallery.Shared.Services
         
         private readonly IUserRepository _UserRepository;
         
-        public DalService(IGitHubService gitHubService, IGalleryRepository galleryRepository, IUserRepository userRepository)
+        readonly ILogger<DalService> _Logger;
+
+
+        public DalService(IGitHubService gitHubService, IGalleryRepository galleryRepository, IUserRepository userRepository, ILogger<DalService> logger)
         {
             _GitHubService = gitHubService;
             _GalleryRepository = galleryRepository;
             _UserRepository = userRepository;
+            _Logger = logger;
         }
 
         public async Task<GitHubData?> GitHubRepositoryQuery(string query) =>

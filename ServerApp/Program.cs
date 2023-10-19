@@ -6,12 +6,20 @@ using GalleryAPI.Services;
 using Microsoft.OpenApi.Models;
 using GalleryAPI.IdentifyTokenService;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Serilog configuration
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddHostedService<InitializationService>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
