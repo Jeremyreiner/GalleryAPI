@@ -9,17 +9,10 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private router: Router,
-    private api: ApiService) {}
+    private router: Router) {}
   ngOnInit(): void {
     
-    this.api.login().subscribe((token: string) => {
-
-      console.log(`token to storage`, token);
-      localStorage.setItem('authToken', token)
-    })
-    
-    this.router.navigate(['search-repositories']);
+    this.router.navigate(['login']);
 
   }
   title = 'ClientApp';

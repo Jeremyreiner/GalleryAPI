@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { RepositorySearchComponent } from './repository-search/repository-search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RepositorySearchComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

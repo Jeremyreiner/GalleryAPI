@@ -49,9 +49,8 @@ export class ApiService {
     return this.http.post(url, item).subscribe();
   }
 
-  login(): Observable<any> {
+  login(name: string): Observable<any> {
     console.log('attempting login');
-    let name = 'Jimmy';
     let url = `${this.authUrl}/Login/${name}`;
     return this.http.get<string>(url);
   }

@@ -1,0 +1,11 @@
+<div class="centered">
+  <div class="search-form">
+    <form (ngSubmit)="onSubmit()" class="form-inline">
+      <div class="input-group">
+        <input type="text" class="form-control" id="searchInput" placeholder="Enter your name" name="name"
+          [(ngModel)]="name" required>
+      </div>
+      <button type="submit" class="static-button">Submit</button>
+    </form>
+  </div>
+</div>

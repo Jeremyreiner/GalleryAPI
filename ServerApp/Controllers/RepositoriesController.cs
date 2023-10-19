@@ -13,10 +13,13 @@ public class RepositoriesController : ControllerBase
 
     private readonly IDalService _DalService;
 
-    public RepositoriesController(IIdentifyTokenService identifyTokenService, IDalService dalService)
+    private readonly ILogger<RepositoriesController> _Logger;
+
+    public RepositoriesController(IIdentifyTokenService identifyTokenService, IDalService dalService, ILogger<RepositoriesController> logger)
     {
         _IdentifyTokenService = identifyTokenService;
         _DalService = dalService;
+        _Logger = logger;
     }
 
     [HttpGet("search/{query}")]
@@ -32,6 +35,8 @@ public class RepositoriesController : ControllerBase
     {
         var name = _IdentifyTokenService.GetNameFromToken();
 
+        _Logger.LogInformation($"Name recieved from token: {name}");
+
         return await _DalService.GetUserGallery("Jimmy");
     }
 
@@ -39,6 +44,8 @@ public class RepositoriesController : ControllerBase
     public async Task UpdateGallery([FromBody] GitHubItem item)
     {
         var name = _IdentifyTokenService.GetNameFromToken();
+
+        _Logger.LogInformation($"Name recieved from token: {name}");
 
         await _DalService.UpdateGallery(item, "Jimmy");
     }
