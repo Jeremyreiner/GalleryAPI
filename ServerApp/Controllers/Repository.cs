@@ -21,11 +21,12 @@ public class Repository : ICarterModule
             .RequireAuthorization();
     }
 
-    public static async Task<Result<IEnumerable<GitHubItem>>> GetQuery(string query, IDalService dalService)
+    public static async Task<Result<IEnumerable<GitHubItem>>> GetQuery(
+        string query, 
+        IDalService dalService)
     {
-        var result= await dalService.GitHubRepositoryQuery(query);
+        var result = await dalService.GitHubRepositoryQuery(query);
 
-        
         return result.IsSuccess 
             ? Result<IEnumerable<GitHubItem>>.Success(result.Value.items) 
             : Result<IEnumerable<GitHubItem>>.Success(Enumerable.Empty<GitHubItem>());
@@ -35,19 +36,13 @@ public class Repository : ICarterModule
         IIdentifyTokenService identifyTokenService,
         IDalService dalService)
     {
-        var name = identifyTokenService.GetNameFromToken();
-
-        var gallery = await dalService.GetUserGallery(name);
+        var gallery = await dalService.GetUserGallery(identifyTokenService.GetNameFromToken());
 
         return Result<IEnumerable<GitHubItem>>.Success(gallery);
     }
 
     public static async Task UpdateGallery(GitHubItem item,
         IIdentifyTokenService identifyTokenService,
-        IDalService dalService)
-    {
-        var name = identifyTokenService.GetNameFromToken();
-
-        await dalService.UpdateGallery(item, name);
-    }
+        IDalService dalService) =>
+        await dalService.UpdateGallery(item, identifyTokenService.GetNameFromToken());
 }

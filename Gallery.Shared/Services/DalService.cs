@@ -16,7 +16,11 @@ namespace Gallery.Shared.Services
         readonly ILogger<DalService> _Logger;
 
 
-        public DalService(IGitHubService gitHubService, IGalleryRepository galleryRepository, IUserRepository userRepository, ILogger<DalService> logger)
+        public DalService(
+            IGitHubService gitHubService, 
+            IGalleryRepository galleryRepository, 
+            IUserRepository userRepository, 
+            ILogger<DalService> logger)
         {
             _GitHubService = gitHubService;
             _GalleryRepository = galleryRepository;
@@ -74,6 +78,19 @@ namespace Gallery.Shared.Services
                 
                 await _GalleryRepository.DeleteAsync(exists);
             }
+        }
+
+        public async Task CreateUser(string name)
+        {
+            var user = await _UserRepository.GetUserByName(u => u.Name == name);
+
+            if (user is not null) return;
+
+            await _UserRepository.CreateUser(new User
+            {
+                Id = Guid.NewGuid(),
+                Name = name
+            });
         }
     }
 }

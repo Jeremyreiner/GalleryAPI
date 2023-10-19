@@ -11,11 +11,22 @@ public class IdentifyTokenService : IIdentifyTokenService
         _HttpContextAccessor = httpContextAccessor;
     }
 
-    public string? GetNameFromToken()
+    public string GetNameFromToken()
     {
         try
         {
-            return _HttpContextAccessor?.HttpContext?.User.Identities.First().Claims.First().Value;
+            var name = _HttpContextAccessor?
+                .HttpContext?
+                .User
+                .Identities
+                .First()
+                .Claims
+                .First()
+                .Value;
+
+            return string.IsNullOrWhiteSpace(name) 
+                ? string.Empty 
+                : name;
 
         }
         catch

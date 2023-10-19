@@ -1,9 +1,4 @@
 ﻿using Gallery.DataBase.Infrastructure.MySql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gallery.Shared.Entities;
 using System.Linq.Expressions;
 using Gallery.Shared.Interface;

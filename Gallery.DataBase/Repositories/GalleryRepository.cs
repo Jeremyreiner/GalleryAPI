@@ -27,9 +27,13 @@ namespace Gallery.DataBase.Repositories
 
         public async Task<List<GalleryModel>> GetListByAsync(Guid userId)
         {
-            var items = await _DbContext.GalleryItems.Where(g => g.UserId == userId).ToListAsync();
+            var items = await _DbContext.GalleryItems
+                .Where(g => g.UserId == userId)
+                .ToListAsync();
 
-            return items.Any() ? items : new List<GalleryModel>();
+            return items.Any() 
+                ? items 
+                : Enumerable.Empty<GalleryModel>().ToList();
         }
 
         public async Task DeleteAsync(GalleryModel model)

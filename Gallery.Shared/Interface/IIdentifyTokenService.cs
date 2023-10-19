@@ -2,5 +2,5 @@
 
 public interface IIdentifyTokenService
 {
-    string? GetNameFromToken();
+    string GetNameFromToken();
 }
