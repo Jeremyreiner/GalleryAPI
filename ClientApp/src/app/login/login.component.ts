@@ -15,9 +15,15 @@ export class LoginComponent {
     private router: Router) { }
 
   onSubmit() {
-    if(this.name){
-      this.api.login(this.name);
-      this.router.navigate(['search-repositories']);
+    if (this.name) {
+      this.api.login(this.name).subscribe((loginSuccessful) => {
+        if (loginSuccessful) {
+          this.router.navigate(['search-repositories']);
+        } else {
+          console.log("Error in logging in.");
+
+        }
+      });
     }
   }
 }

@@ -14,9 +14,7 @@ export class ApiService {
   
   public viewGallery = new BehaviorSubject<boolean>(false);
   public searchTerm = new BehaviorSubject<string>('');
-  public token = new BehaviorSubject<string>('');
 
-  public token$ = this.token.asObservable();
   public searchTerm$ = this.searchTerm.asObservable();
   public viewGallery$ = this.viewGallery.asObservable();
 
@@ -61,16 +59,24 @@ export class ApiService {
     return this.http.post(url, item, { headers: this.getHeader()}).subscribe();
   }
 
-  login(name: string){
+  login(name: string): Observable<boolean> {
     console.log('Attempting login');
     const url = `${this.authUrl}/Login/${name}`;
-    this.http.get<TokenModel>(url).subscribe(
-      (token: TokenModel) => {
-        this.storeToken(token.token);
-      },
-      (error) => {
-        console.log(`error: `, error);
-      });
-  }  
+  
+    return new Observable<boolean>((observer) => {
+      this.http.get<TokenModel>(url).subscribe(
+        (token: TokenModel) => {
+          this.storeToken(token.token);
+          observer.next(true); // Notify success
+          observer.complete();
+        },
+        (error) => {
+          console.log(`error: `, error);
+          observer.next(false); // Notify failure
+          observer.complete();
+        }
+      );
+    });
+  }
   
 }
