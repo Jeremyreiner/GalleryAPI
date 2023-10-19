@@ -1,5 +1,5 @@
 ﻿using Gallery.Shared.Entities;
-using GalleryAPI.Interface;
+using Gallery.Shared.Interface;
 
 namespace GalleryAPI.Services
 {

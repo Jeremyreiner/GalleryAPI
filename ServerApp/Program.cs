@@ -1,8 +1,8 @@
 using Gallery.DataBase.Infrastructure.MySql;
 using Gallery.DataBase.Repositories;
 using Gallery.Shared.Interface;
+using Gallery.Shared.Services;
 using GalleryAPI.Services;
-using GalleryAPI.Interface;
 using Microsoft.OpenApi.Models;
 using GalleryAPI.IdentifyTokenService;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +16,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Register the JwtAuthenticationService as a singleton service.
-builder.Services.AddScoped<JwtService>();
-builder.Services.AddScoped<IIdentifyTokenService, IdentifyTokenService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<IIdentifyTokenService, IdentifyTokenService>();
+builder.Services.AddScoped<IDalService, DalService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IGitHubService, GitHubService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 

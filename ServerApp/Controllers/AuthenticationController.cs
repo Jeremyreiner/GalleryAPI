@@ -1,5 +1,5 @@
-﻿using GalleryAPI.IdentifyTokenService;
-using GalleryAPI.Interface;
+﻿using Gallery.Shared.Interface;
+using GalleryAPI.IdentifyTokenService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GalleryAPI.Controllers;
@@ -28,12 +28,5 @@ public class AuthenticationController : ControllerBase
         var token = await _AuthenticationService.GenerateToken(user);
 
         return token;
-    }
-
-    [HttpPost(nameof(LogOut))]
-    public async Task<ActionResult> LogOut()
-    {
-        // TODO: Implement this action to bookmark a repository for the current user.
-        return Ok();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 
-namespace GalleryAPI.Interface
+namespace Gallery.Shared.Interface
 {
     public interface IAuthenticationService
     {

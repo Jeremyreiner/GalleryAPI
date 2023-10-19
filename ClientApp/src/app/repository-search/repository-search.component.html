@@ -17,12 +17,12 @@
 
     <div class="search-results" *ngIf="hasResults || openGallery">
         <ul class="result-list">
-            <li *ngFor="let result of (openGallery ? galleryItems$ : items$) | async" class="result-item">
-                <button class="expand-button" (dblclick)="bookmarkItem(result)">
-                    {{ result.full_name }}
-                    <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
-                </button>
-            </li>
+                <li *ngFor="let result of (openGallery ? galleryItems$ : items$) | async" class="result-item">
+                    <button class="expand-button" (dblclick)="bookmarkItem(result)">
+                        {{ result.full_name }}
+                        <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
+                    </button>
+                </li>
         </ul>
     </div>
 </div>

@@ -35,7 +35,6 @@ export class RepositorySearchComponent {
 
   viewGallery(){
     this.apiService.viewGallery.next(this.openGallery);
-
   }
 
   onSubmit() {

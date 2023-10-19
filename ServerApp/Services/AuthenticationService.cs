@@ -1,8 +1,5 @@
-﻿using Gallery.DataBase.Repositories;
-using Gallery.Shared.Entities;
+﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
-using GalleryAPI.Interface;
-using System.Xml.Linq;
 
 namespace GalleryAPI.Services
 {

@@ -1,4 +1,6 @@
-﻿namespace GalleryAPI.IdentifyTokenService;
+﻿using Gallery.Shared.Interface;
+
+namespace GalleryAPI.IdentifyTokenService;
 
 public class IdentifyTokenService : IIdentifyTokenService
 {
