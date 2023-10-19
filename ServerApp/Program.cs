@@ -75,7 +75,7 @@ var app = builder.Build();
 //AppDbContext on startup
 var scope = app.Services.CreateScope();
 
-scope.ServiceProvider.GetService<ApplicationDbContext>();
+scope.ServiceProvider.GetService<ApplicationDbContext>(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
