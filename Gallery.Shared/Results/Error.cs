@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace GalleryAPI.Results
+namespace Gallery.Shared.Results
 {
     public class Error
     {
@@ -11,7 +11,7 @@ namespace GalleryAPI.Results
 
 
         public Error() => 
-            (Code) = (HttpStatusCode.OK);
+            (Code) = (HttpStatusCode.NoContent);
 
         public Error(HttpStatusCode code)
         {

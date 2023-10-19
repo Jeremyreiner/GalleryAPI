@@ -1,6 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
-using GalleryAPI.Results;
+using Gallery.Shared.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

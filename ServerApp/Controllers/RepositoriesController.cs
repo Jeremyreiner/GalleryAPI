@@ -1,9 +1,9 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
-using GalleryAPI.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Gallery.Shared.Results;
 
 namespace GalleryAPI.Controllers;
 
@@ -37,9 +37,12 @@ public class RepositoriesController : ControllerBase
     [HttpGet("search/{query}")]
     public async Task<Result<IEnumerable<GitHubItem>>> Get(string query)
     {
-        var response = await _DalService.GitHubRepositoryQuery(query);
+        var result= await _DalService.GitHubRepositoryQuery(query);
 
-        return Result<IEnumerable<GitHubItem>>.Success(response.items);
+        
+        return result.IsSuccess 
+            ? Result<IEnumerable<GitHubItem>>.Success(result.Value.items) 
+            : Result<IEnumerable<GitHubItem>>.Success(Enumerable.Empty<GitHubItem>());
     }
 
     [HttpGet(nameof(GetUserGallery))]

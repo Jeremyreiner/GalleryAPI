@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace GalleryAPI.Results
+namespace Gallery.Shared.Results
 {
     public class Result<T>
     {

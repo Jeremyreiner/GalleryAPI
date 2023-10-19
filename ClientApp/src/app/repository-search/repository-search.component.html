@@ -1,16 +1,16 @@
 <div class="page-container">
-    <!-- Search form on Input -->
-    <!-- <div class="search-form">
+    <!-- Search form onInput -->
+    <div class="search-form">
         <form #searchForm="ngForm" class="form-inline">
             <div class="input-group">
                 <input type="text" class="form-control custom-input" id="searchInput" [(ngModel)]="searchTerm"
                     (input)="onSubmit()" name="searchTerm" placeholder="Search GitHub Repositories" />
             </div>
         </form>
-    </div> -->
+    </div>
     
-    <!-- Search form on Enter / Click -->
-    <div class="search-form">
+    <!-- Search form onEnter / onClick -->
+    <!-- <div class="search-form">
         <form #searchForm="ngForm" class="form-inline" (ngSubmit)="onSubmit()">
             <div class="input-group">
                 <input type="text" class="form-control custom-input" id="searchInput" [(ngModel)]="searchTerm"
@@ -18,7 +18,7 @@
                     <button type="submit" class="input-button">Search</button>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <div style="max-width:750px; margin:auto; display:flex; justify-content:center; margin-top: 2em;">
         <button class="static-button" (click)="toggleGallery()">

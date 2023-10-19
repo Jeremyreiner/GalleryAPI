@@ -1,10 +1,11 @@
 ﻿using Gallery.Shared.Entities;
+using Gallery.Shared.Results;
 
 namespace Gallery.Shared.Interface;
 
 public interface IDalService
 {
-    Task<GitHubData?> GitHubRepositoryQuery(string query);
+    Task<Result<GitHubData>> GitHubRepositoryQuery(string query);
 
     Task<IEnumerable<GitHubItem>> GetUserGallery(string name);
 

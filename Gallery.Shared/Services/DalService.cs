@@ -1,5 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
+using Gallery.Shared.Results;
 using Microsoft.Extensions.Logging;
 
 namespace Gallery.Shared.Services
@@ -23,8 +24,14 @@ namespace Gallery.Shared.Services
             _Logger = logger;
         }
 
-        public async Task<GitHubData?> GitHubRepositoryQuery(string query) =>
-            await _GitHubService.QueryGitHub(query);
+        public async Task<Result<GitHubData>> GitHubRepositoryQuery(string query)
+        {
+            var data = await _GitHubService.QueryGitHub(query);
+
+            return data is null 
+                ? Result<GitHubData>.Failed(Error.None) 
+                : Result<GitHubData>.Success(data);
+        }
 
         public async Task<IEnumerable<GitHubItem>> GetUserGallery(string name)
         {

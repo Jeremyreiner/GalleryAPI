@@ -36,10 +36,5 @@ namespace GalleryAPI.Services
 
             return token ?? string.Empty;
         }
-
-        public Task Logout(User user)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
