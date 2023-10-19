@@ -14,10 +14,10 @@ public class Repository : ICarterModule
         group.MapGet("search/{query}", GetQuery)
             .RequireAuthorization();
 
-        group.MapGet("GetUserGallery", GetUserGallery).WithName(nameof(GetUserGallery))
+        group.MapGet("GetUserGallery", GetUserGallery)
             .RequireAuthorization();
 
-        group.MapPost("UpdateGallery", UpdateGallery).WithName(nameof(UpdateGallery))
+        group.MapPost("UpdateGallery", UpdateGallery)
             .RequireAuthorization();
     }
 
