@@ -26,18 +26,12 @@ export class RepositorySearchComponent {
 
   bookmarkItem(item: GitHubItem) {
     this.apiService.UpdateGallery(item);
-    
-    if(this.openGallery){
-      this.viewGallery();
-    }; 
+
+    this.apiService.viewGallery.next(this.openGallery);
   }
 
   toggleGallery(){
     this.openGallery = !this.openGallery;
-  }
-
-  viewGallery(){
-    this.apiService.viewGallery.next(this.openGallery);
   }
 
   onSubmit() {

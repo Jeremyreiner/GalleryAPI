@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +17,13 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.name) {
-      this.api.login(this.name).subscribe((loginSuccessful) => {
-        if (loginSuccessful) {
+      this.api.login(this.name).pipe(tap((res) => {
+        if (res) {
           this.router.navigate(['search-repositories']);
         } else {
           console.log("Error in logging in.");
-
         }
-      });
+      })).subscribe();
     }
   }
 }

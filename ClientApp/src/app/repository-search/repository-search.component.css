@@ -6,6 +6,9 @@
     padding: .5rem 1rem;
     /* Add padding to the list to separate items */
 }
+.result-list{
+    list-style: none;
+}
 
 .avatar-image {
     opacity: 0;
