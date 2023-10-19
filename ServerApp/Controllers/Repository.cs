@@ -34,10 +34,15 @@ public class Repository : ICarterModule
 
     public static async Task<Result<IEnumerable<GitHubItem>>> GetUserGallery( 
         IIdentifyTokenService identifyTokenService,
-        IDalService dalService)
+        IDalService dalService,
+        ILogger<Repository> logger)
     {
-        var gallery = await dalService.GetUserGallery(identifyTokenService.GetNameFromToken());
+        var name = identifyTokenService.GetNameFromToken();
 
+        var gallery = await dalService.GetUserGallery(name);
+
+        logger.LogInformation($"Gallery of user: {name}");
+        
         return Result<IEnumerable<GitHubItem>>.Success(gallery);
     }
 

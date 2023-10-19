@@ -1,7 +1,6 @@
 ﻿using Carter;
 using Gallery.Shared.Interface;
 using Gallery.Shared.Results;
-using Microsoft.AspNetCore.Mvc;
 
 namespace GalleryAPI.Controllers;
 
@@ -16,9 +15,12 @@ public class Authentication : ICarterModule
 
     public static async Task<Result<string>> Login(
         string user, 
-        IAuthenticationService authenticationService)
+        IAuthenticationService authenticationService,
+        ILogger<Authentication> logger)
     {
         var token = await authenticationService.GenerateToken(user);
+
+        logger.LogInformation($"sign in ${user}");
 
         return Result<string>.Success(token);
     }

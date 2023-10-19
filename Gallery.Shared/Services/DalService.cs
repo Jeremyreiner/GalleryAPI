@@ -62,7 +62,7 @@ namespace Gallery.Shared.Services
 
             if (exists is null)
             {
-                _Logger.LogInformation($"Adding to gallery: {item.full_name}");
+                _Logger.LogInformation($"Adding to the repository {item.full_name} to {name}'s gallery");
                 
                 await _GalleryRepository.AddAsync(new GalleryModel
                 {
@@ -74,7 +74,7 @@ namespace Gallery.Shared.Services
             }
             else
             {
-                _Logger.LogInformation($"Removing from gallery: {item.full_name}");
+                _Logger.LogInformation($"Removing from {name}'s gallery the repository: {item.full_name} ");
                 
                 await _GalleryRepository.DeleteAsync(exists);
             }
