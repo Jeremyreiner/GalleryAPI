@@ -4,7 +4,6 @@ using Gallery.Shared.Interface;
 using Gallery.Shared.Services;
 using GalleryAPI.Services;
 using Microsoft.OpenApi.Models;
-using GalleryAPI.IdentifyTokenService;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

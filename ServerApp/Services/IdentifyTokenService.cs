@@ -1,6 +1,6 @@
 ﻿using Gallery.Shared.Interface;
 
-namespace GalleryAPI.IdentifyTokenService;
+namespace GalleryAPI.Services;
 
 public class IdentifyTokenService : IIdentifyTokenService
 {
@@ -27,7 +27,7 @@ public class IdentifyTokenService : IIdentifyTokenService
 
     public string GetEmailFromTokenThrow()
     {
-        var email= GetNameFromToken();
+        var email = GetNameFromToken();
 
         return email ?? throw new ArgumentException("User is not authenticated");
     }

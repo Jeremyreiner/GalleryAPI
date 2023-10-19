@@ -1,7 +1,6 @@
 ﻿using Gallery.Shared.Entities;
 using Gallery.Shared.Interface;
 using Microsoft.AspNetCore.Mvc;
-using GalleryAPI.IdentifyTokenService;
 
 namespace GalleryAPI.Controllers;
 

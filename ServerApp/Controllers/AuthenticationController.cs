@@ -1,5 +1,4 @@
 ﻿using Gallery.Shared.Interface;
-using GalleryAPI.IdentifyTokenService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GalleryAPI.Controllers;
