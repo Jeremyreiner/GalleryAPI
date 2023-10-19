@@ -1,3 +1,4 @@
+using Carter;
 using Gallery.DataBase.Infrastructure.MySql;
 using Gallery.DataBase.Repositories;
 using Gallery.Shared.Interface;
@@ -68,6 +69,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySql"),
         new MySqlServerVersion(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql")))));
 
+builder.Services.AddCarter();
 var app = builder.Build();
 
 //AppDbContext on startup
@@ -91,6 +93,6 @@ app.UseAuthorization();
 
 app.UseCors("AllowLocalhost");
 
-app.MapControllers();
+app.MapCarter();
 
 app.Run();
