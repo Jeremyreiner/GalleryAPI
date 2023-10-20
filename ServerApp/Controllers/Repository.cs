@@ -41,12 +41,15 @@ public class Repository : ICarterModule
 
         var gallery = await dalService.GetUserGallery(name);
 
-        logger.LogInformation($"Gallery of user: {name}");
+        var gitHubItems = gallery as GitHubItem[] ?? gallery.ToArray();
         
-        return Result<IEnumerable<GitHubItem>>.Success(gallery);
+        logger.LogInformation($"Gallery of user: {name}, Count: {gitHubItems.Length}");
+        
+        return Result<IEnumerable<GitHubItem>>.Success(gitHubItems);
     }
 
-    public static async Task UpdateGallery(GitHubItem item,
+    public static async Task UpdateGallery(
+        GitHubItem item,
         IIdentifyTokenService identifyTokenService,
         IDalService dalService) =>
         await dalService.UpdateGallery(item, identifyTokenService.GetNameFromToken());
