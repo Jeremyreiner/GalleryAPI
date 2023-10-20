@@ -8,7 +8,7 @@
             </div>
         </form>
     </div>
-    
+
     <!-- Search form onEnter / onClick -->
     <!-- <div class="search-form">
         <form #searchForm="ngForm" class="form-inline" (ngSubmit)="onSubmit()">
@@ -21,20 +21,16 @@
     </div> -->
 
     <div style="max-width:750px; margin:auto; display:flex; justify-content:center; margin-top: 2em;">
-        <button class="static-button" (click)="toggleGallery()">
-            {{ openGallery ? 'Return to Search' : 'View Gallery' }}
-        </button>
+        <mat-slide-toggle [(ngModel)]="openGallery" (toggleChange)="toggleGallery()">
+            Slide toggle is: {{ openGallery ? 'Return to Search' : 'View Gallery' }}
+        </mat-slide-toggle>
     </div>
-
     <div class="search-results" *ngIf="hasResults || openGallery">
-        <ul class="result-list">
-            <li *ngFor="let result of (openGallery ? galleryItems$ : items$) | async"
-                class="(galleryItems$.contains(result))result-item">
-                <button class="expand-button" (dblclick)="bookmarkItem(result)">
-                    {{ result.full_name }}
-                    <img class="avatar-image" [src]="result.owner.avatar_url" alt="Avatar">
-                </button>
-            </li>
-        </ul>
+        <mat-selection-list #items (selectionChange)="bookmarkItem($event)">
+            <mat-list-option *ngFor="let result of (openGallery ? galleryItems$ : items$) | async" [value]="result">
+                <img matListItemAvatar src={{result.owner.avatar_url}} alt="Avatar">
+                <h3 matListItemTitle>{{ result.full_name }}</h3>
+            </mat-list-option>
+        </mat-selection-list>
     </div>
 </div>

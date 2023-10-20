@@ -15,5 +15,5 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
 
   }
-  title = 'ClientApp';
+  title = 'Repository Search';
 }
