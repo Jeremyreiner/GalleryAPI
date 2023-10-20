@@ -16,7 +16,7 @@ namespace Gallery.Shared.Services
         readonly ILogger<DalService> _Logger;
 
 
-        public DalService(IGitHubService gitHubService, IGalleryRepository galleryRepository, IUserRepository userRepository, ILogger<DalService> logger)
+        public DalService(IGitHubService gitHubService, IGalleryRepository galleryRepository, IUserRepository userRepository, ILogger<DalService> logger) 
         {
             _GitHubService = gitHubService;
             _GalleryRepository = galleryRepository;
