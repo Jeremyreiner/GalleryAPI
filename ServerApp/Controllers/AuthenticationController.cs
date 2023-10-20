@@ -12,7 +12,7 @@ public class AuthenticationController : ControllerBase
 {
     private readonly IAuthenticationService _AuthenticationService;
     private readonly ILogger<AuthenticationController> _Logger;
-    public AuthenticationController(IAuthenticationService authenticationService, ILogger<AuthenticationController> logger)
+    public AuthenticationController(IAuthenticationService authenticationService, ILogger<AuthenticationController> logger) 
     {
         _AuthenticationService = authenticationService;
         _Logger = logger;
