@@ -1,28 +1,28 @@
 <div class="page-container">
     <!-- Search form onInput -->
-    <div class="search-form">
+    <!-- <div class="search-form">
         <form #searchForm="ngForm" class="form-inline">
             <div class="input-group">
-                <input type="text" class="form-control custom-input" id="searchInput" [(ngModel)]="searchTerm"
+                <input type="text" class="form-control"  [(ngModel)]="searchTerm"
                     (input)="onSubmit()" name="searchTerm" placeholder="Search GitHub Repositories" />
-            </div>
-        </form>
-    </div>
-
-    <!-- Search form onEnter / onClick -->
-    <!-- <div class="search-form">
-        <form #searchForm="ngForm" class="form-inline" (ngSubmit)="onSubmit()">
-            <div class="input-group">
-                <input type="text" class="form-control custom-input" id="searchInput" [(ngModel)]="searchTerm"
-                    name="searchTerm" placeholder="Search GitHub Repositories" />
-                    <button type="submit" class="input-button">Search</button>
             </div>
         </form>
     </div> -->
 
-    <div style="max-width:750px; margin:auto; display:flex; justify-content:center; margin-top: 2em;">
+    <!-- Search form onEnter / onClick -->
+    <div class="search-form">
+        <form #searchForm="ngForm" class="form-inline" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="searchTerm"
+                    name="searchTerm" placeholder="Search GitHub Repositories" />
+                    <button type="submit" class="input-button">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div clas="toggle" style="max-width:750px; margin:auto; display:flex; justify-content:center; margin-top: 2em;">
         <mat-slide-toggle [(ngModel)]="openGallery" (toggleChange)="toggleGallery()">
-            Slide toggle is: {{ openGallery ? 'Return to Search' : 'View Gallery' }}
+            {{ openGallery ? 'Return to Search' : 'View Gallery' }}
         </mat-slide-toggle>
     </div>
     <div class="search-results" *ngIf="hasResults || openGallery">

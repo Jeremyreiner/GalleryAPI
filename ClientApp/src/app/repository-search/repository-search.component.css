@@ -64,14 +64,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.mat-mdc-slide-toggle .mdc-switch:enabled .mdc-label{
-    font-size: 16px !important;
-    margin: 5px 0 !important;
-    color: lightgrey !important;   
-  }
-
-  .mdc-list-item__primary-text{
-    color: lightgray !important;
+.mat-slide-toggle .mat-slide-toggle-label .mat-slide-toggle-label-content {
+    color: #ff0000 !important; /* Change this to the desired color value (e.g., red) */
   }
 
 .search-results {
@@ -89,20 +83,22 @@
     max-width: 750px;
 }
 
+.mdc-list-item__primary-text{
+    color: lightgray !important;
+  }
+  
 .input-button{
-    width:100%;
+    width:105%;
     padding: .5rem 6rem;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     transition: background-color 0.3s, box-shadow 0.3s;
     margin:auto;
-    
-    background-color: #007bff;
+    background-color: #187538;
     color: #fff;
     cursor: pointer;
     text-align: center;
-    max-width: 100%;
     position: relative;
     overflow: hidden;
 }
