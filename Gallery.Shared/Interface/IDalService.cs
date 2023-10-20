@@ -5,9 +5,11 @@ namespace Gallery.Shared.Interface;
 
 public interface IDalService
 {
-    Task<Result<GitHubData>> GitHubRepositoryQuery(string query);
+    Task CreateUser(string name);
 
     Task<IEnumerable<GitHubItem>> GetUserGallery(string name);
+
+    Task<Result<GitHubData>> GitHubRepositoryQuery(string query);
 
     Task UpdateGallery(GitHubItem item, string name);
 }

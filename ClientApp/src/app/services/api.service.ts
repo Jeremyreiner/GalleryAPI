@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, catchError, debounceTime, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, debounceTime, map, of, switchMap } from 'rxjs';
 import { GitHubItem } from '../models/gitHubItems';
 import { Result } from '../models/result';
 
@@ -8,9 +8,9 @@ import { Result } from '../models/result';
   providedIn: 'root'
 })
 export class ApiService {
-  private hardCoded = `https://localhost:5002/api`;
-  private repositoryUrl = `${this.hardCoded}/Repositories`;
-  private authUrl = `${this.hardCoded}/Authentication`;
+  private url = `https://localhost:5002/api`;
+  private repositoryUrl = `${this.url}/Repositories`;
+  private authUrl = `${this.url}/Authentication`;
 
   public viewGallery = new BehaviorSubject<boolean>(false);
   public searchTerm = new BehaviorSubject<string>('');
@@ -61,7 +61,9 @@ export class ApiService {
 
   UpdateGallery(item: GitHubItem) {
     const url = `${this.repositoryUrl}/UpdateGallery`;
-    return this.http.post(url, item, { headers: this.getHeader() }).subscribe();
+    this.http.post(url, item, { headers: this.getHeader() }).subscribe();
+
+    this.getUserGallery()
   }
 
   login(name: string): Observable<boolean> {

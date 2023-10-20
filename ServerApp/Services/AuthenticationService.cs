@@ -7,30 +7,17 @@ namespace GalleryAPI.Services
     {
         readonly JwtService _JwtService;
 
-        readonly IUserRepository _userRepository;
+        readonly IDalService _DalService;
 
-        public AuthenticationService(JwtService jwtService, IUserRepository userRepository)
+        public AuthenticationService(JwtService jwtService, IDalService dalService)
         {
             _JwtService = jwtService;
-            _userRepository = userRepository;
-        }
-
-        private async Task CreateUser(string name)
-        {
-            var user = await _userRepository.GetUserByName(u => u.Name == name);
-
-            if (user is not null) return;
-
-            await _userRepository.CreateUser(new User
-            {
-                Id = Guid.NewGuid(),
-                Name = name
-            });
+            _DalService = dalService;
         }
 
         public async Task<string> GenerateToken(string name)
         {
-            await CreateUser(name);
+            await _DalService.CreateUser(name);
 
             var token = _JwtService.GenerateSecurityToken(name);
 

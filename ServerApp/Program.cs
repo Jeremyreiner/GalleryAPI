@@ -1,3 +1,4 @@
+using Carter;
 using Gallery.DataBase.Infrastructure.MySql;
 using Gallery.DataBase.Repositories;
 using Gallery.Shared.Interface;
@@ -33,9 +34,8 @@ builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IGitHubService, GitHubService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-//Auth
 builder.Services.AddTokenAuthentication(builder.Configuration);
-//Swagger Auth
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -46,7 +46,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = SecuritySchemeType.ApiKey
     });
 });
-
 
 builder.Services.AddHttpClient("GitHub", httpClient =>
 {
@@ -63,17 +62,17 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
-//MySQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySql"),
         new MySqlServerVersion(ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySql")))));
 
+builder.Services.AddCarter();
 var app = builder.Build();
 
 //AppDbContext on startup
 var scope = app.Services.CreateScope(); 
 
-scope.ServiceProvider.GetService<ApplicationDbContext>();
+scope.ServiceProvider.GetService<ApplicationDbContext>(); 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -84,13 +83,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Add the JwtBearer authentication middleware to the pipeline.
+// Add the JwtBearer authentication middleware
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.UseCors("AllowLocalhost");
 
-app.MapControllers();
+//map all minimal api endpoints using carter
+app.MapCarter();
 
 app.Run();

@@ -12,6 +12,7 @@ namespace Gallery.DataBase.Infrastructure.MySql
         }
 
         public DbSet<User> Users{ get; set; } = null!;
+
         public DbSet<GalleryModel> GalleryItems{ get; set; } = null!;
     }
 }

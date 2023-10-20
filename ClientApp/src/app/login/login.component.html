@@ -1,11 +1,25 @@
-<div class="centered">
-  <div class="search-form">
-    <form (ngSubmit)="onSubmit()" class="form-inline">
-      <div class="input-group">
-        <input type="text" class="form-control" id="searchInput" placeholder="Enter your name" name="name"
-          [(ngModel)]="name" required>
-      </div>
-      <button type="submit" class="static-button">Submit</button>
-    </form>
+<div class="page-container">
+  <div class="mat-card-header">
+    <h1 class="mat-card-title">Your Gallery</h1>
+    <h2 class="mat-card-subtitle">
+      Designed by <a href="https://www.linkedin.com/in/jeremy-reiner-608556124/">Jeremy Reiner</a>
+      Like what you see? Call me by cell <a href="tel:+13604513821">+1 (360) 451-3821</a>, by WhatsApp <a href="tel:+9720534268394">+972 (053) 4268394</a>
+      or send an email to: <a href="mailto:reiner_jeremy@yahoo.com">reiner_jeremy@yahoo.com</a>!
+    </h2>
+
+    <h2 class="mat-card-subtitle">
+      This project was made with Angular 16 for the client side and .NET Entity Framework with MySQL for the server
+      side. Source code can be found <a href="https://github.com/Jeremyreiner/GalleryAPI">Here</a>
+    </h2>
   </div>
-</div> 
+
+    <div class="search-form">
+      <form (ngSubmit)="onSubmit()" class="form-inline">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchInput" placeholder="Enter your name" name="name"
+            [(ngModel)]="name" required>
+            <button type="submit" class="static-button">Submit</button>
+          </div>
+      </form>
+    </div>
+</div>

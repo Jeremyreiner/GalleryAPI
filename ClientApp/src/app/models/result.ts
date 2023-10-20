@@ -6,7 +6,7 @@ export class Result<T> {
 
     constructor(value: T) {
         this.value = value;
-        this.status = 200; 
+        this.status = 200;
         this.error = Error.None;
     }
 
@@ -17,10 +17,10 @@ export class Result<T> {
 
 export class Error {
     code: number;
-  
+
     static None: Error = new Error(200);
-  
+
     constructor(code: number) {
-      this.code = code;
+        this.code = code;
     }
-  }
+}
