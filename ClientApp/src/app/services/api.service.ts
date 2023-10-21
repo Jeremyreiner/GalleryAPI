@@ -47,7 +47,7 @@ export class ApiService {
 
   getUserGallery(): Observable<GitHubItem[]> {
     return this.viewGallery$.pipe(
-      debounceTime(300),
+      debounceTime(200),
       switchMap(() => {
         console.log('getting gallery');
 

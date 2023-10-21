@@ -13,7 +13,7 @@ export class RepositorySearchComponent {
   searchTerm: string = '';
   openGallery: boolean = false;
   hasResults: boolean = false;
-
+  
 
   galleryItems$: Observable<GitHubItem[]> = this.apiService.getUserGallery(); //need a way to track changes immediatly 
   items$: Observable<GitHubItem[]> = this.apiService.getRepositories();
