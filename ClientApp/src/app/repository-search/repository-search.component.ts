@@ -15,7 +15,7 @@ export class RepositorySearchComponent {
   hasResults: boolean = false;
   
 
-  galleryItems$: Observable<GitHubItem[]> = this.apiService.getUserGallery(); //need a way to track changes immediatly 
+  galleryItems$: Observable<GitHubItem[]> = this.apiService.getUserGallery();
   items$: Observable<GitHubItem[]> = this.apiService.getRepositories();
 
   constructor(
