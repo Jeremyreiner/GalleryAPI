@@ -2,7 +2,7 @@
     <!-- Search form onInput -->
     <!-- <div class="search-form">
         <form #searchForm="ngForm" class="form-inline">
-            <div class="input-group">
+            <div>
                 <input type="text" class="form-control"  [(ngModel)]="searchTerm"
                     (input)="onSubmit()" name="searchTerm" placeholder="Search GitHub Repositories" />
             </div>
@@ -11,8 +11,8 @@
 
     <!-- Search form onEnter / onClick -->
     <div class="search-form">
-        <form #searchForm="ngForm" class="form-inline" (ngSubmit)="onSubmit()">
-            <div class="input-group">
+        <form #searchForm="ngForm" (ngSubmit)="onSubmit()">
+            <div>
                 <input type="text" class="form-control" [(ngModel)]="searchTerm"
                     name="searchTerm" placeholder="Search GitHub Repositories" />
                     <button type="submit" class="input-button">Search</button>
@@ -20,7 +20,7 @@
         </form>
     </div>
 
-    <div clas="toggle" style="max-width:750px; margin:auto; display:flex; justify-content:center; margin-top: 2em;">
+    <div class="toggle">
         <mat-slide-toggle [(ngModel)]="openGallery" (toggleChange)="toggleGallery()">
             {{ openGallery ? 'Return to Search' : 'Bookmarked Items' }}
         </mat-slide-toggle>

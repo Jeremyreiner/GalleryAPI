@@ -36,6 +36,7 @@ export class RepositorySearchComponent {
   }
 
   onSubmit() {
+    this.openGallery = false;
     this.apiService.searchTerm.next(this.searchTerm);
   }
 }
