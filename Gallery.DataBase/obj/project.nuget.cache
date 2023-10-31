@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tJPzr6HE3TdkWi2URetII8YxGXuGFyFRJCqrLRsxjX78YoAJhgTzLK8sHHuNeu00BiOjRieg8nFZvQwrB3MTVA==",
+  "dgSpecHash": "8Jn2aXRQ/T/hiRtGo/rNk2hAkahAmxvxqazKWiJYv1VJXKWwTmvsOWW78KByciRLucZb8yHdjihQJZuJY2rUXQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\reine\\source\\repos\\GalleryAPI\\Gallery.DataBase\\Gallery.DataBase.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\reine\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\reine\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.2\\microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.2\\microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "1m3MkVS14WyvbGDP1lOS92u7Gi9xFwK/y0vtZPoALIvgA+ceRo0THGcHoipAEhSy2plO0plWN/XgJBjOn9q66w==",
+  "dgSpecHash": "F88p6rx2W5VUwRRlSziGKY6IXC+zZcpRydWjy+t6un9W+YVDjLoOG7MZtHKvO75tpHjN4gSvahDbfgLUO826JQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\reine\\source\\repos\\GalleryAPI\\Gallery.Shared\\Gallery.Shared.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\reine\\.nuget\\packages\\mediatr\\12.1.1\\mediatr.12.1.1.nupkg.sha512",
+    "C:\\Users\\reine\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.0\\microsoft.extensions.configuration.binder.7.0.0.nupkg.sha512",
     "C:\\Users\\reine\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",

@@ -34,7 +34,7 @@ builder.Services.AddScoped<IGalleryRepository, GalleryRepository>();
 builder.Services.AddScoped<IGitHubService, GitHubService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-builder.Services.AddTokenAuthentication(builder.Configuration);
+builder.Services.AddTokenAuthentication(builder.Configuration); 
 
 builder.Services.AddSwaggerGen(c =>
 {
